@@ -43,3 +43,11 @@ class MerakiRestClient:
         resp = self.session.get(url, params=params, timeout=self.timeout_s)
         resp.raise_for_status()
         return resp.json()
+    
+    def get_response(self, path: str, params: Optional[Dict[str, Any]] = None) -> requests.Response:
+        url = f"{self.base_url.rstrip('/')}/{path.lstrip('/')}"
+        resp = self.session.get(url, params=params, timeout=self.timeout_s)
+        resp.raise_for_status()
+        return resp
+
+
